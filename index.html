@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>OCVE: Object-Centric Video Editing</title>
+  <link rel="icon" type="image/x-icon" href="static/images/ocve_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">OCVE: Object-Centric Video Editing</h1>
+
+
+                  <div class="is-size-3 publication-authors">
+                    <span class="author-block">Anonymous Submission</span>
+
+                  </div>
+
+                  <div class="column has-text-centered">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Advanced text-guided generation models have facilitated the creation of high-quality and diverse images/videos based on textual descriptions. 
+            However, these models still face limitations in faithfully replicating the visual appearance of a specified reference image or object and generating innovative variations.
+            These limitations can be more severe in the video-level generation because existing methods struggle with temporal consistency and precise control over object appearance and integration. 
+            In this paper, we present a novel <i style="color: #eb002a">Object-Centric-Video-Editing(OCVE)</i>  framework that delivers superior temporal coherence and enables user control, which contributes to personalized videos with object-centric editing and satisfactory content re-creation.
+            To ensure object-centric video editing with user intent and a visually coherent result, OCVE addresses key challenges by (1) providing reference images to guide precise edits, (2) employing an S.T.W (spatial-temporal window) attention mechanism to optimize computational efficiency, and (3) using mask-based latent editing to isolate object modifications from their background, preserving the integrity of the original scene. Finally, OCVE facilitates targeted video manipulation through keyframe mask editing in the latent space and extends these modifications to non-keyframes via correspondence propagation. This ensures seamless object edits, visually coherent results, and smooth, natural-looking object interactions within the video. Extensive experiments demonstrate that OCVE outperforms existing methods in creating controlled and temporally consistent video editing. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper Pipeline -->
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-2">Pipeline</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/ocve-pipline.png" />
+        </div>
+        <p class="content has-text-justified">
+         <b>Pipeline:</b> Utilizing both a chat agent-generated text description and the reference image, OCVE precisely edits the target object throughout the video while maintaining overall visual coherence. The figure shows the video editing results of OCVE applied to two user-provided reference images, Ref I and Ref II, respectively.
+         <br/><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper Pipeline -->
+
+<!-- Paper Method -->
+<section class="section hero-1">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-2">Method</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/ocve_framework.png" />
+        </div>
+        <p class="content has-text-justified">
+         <b>Method:</b> OCVE framework: Our novel object-centric video editing framework incorporates: 1) Reference image-based LoRA fine-tuning, 2) Spatial-temporal window attention for optimized keyframe generation, and 3) Mask-based latent blending for controlled edits and inter-frame propagation.
+         <br/><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Paper Method -->
+
+
+<!-- <section class="section hero-1">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-2">Method</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/SDVE_framework.pdf" />
+        </div>
+        <p class="content has-text-justified">
+         <b>Pipeline:</b> SDVE enables subject-driven video editing through user-provided reference images. Utilizing both a chat agent-generated text description and the reference image, SDVE precisely edits the target subject throughout the video while maintaining overall visual coherence. 
+         <br/><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- Paper poster -->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+        
+      <table width="800" border="0">
+        <tbody>
+          <tr>
+            <td colspan="3">
+              <p>
+                We observe that the level of temporal consistency of a video is tightly related to the temporal consistency of its feature representation, as can be seen in the feature visualization below.
+                The features of a natural video have a shared, temporally consistent representation. When editing the video per frame, this consistency breaks. Our method ensures the same level of feature consistency as in the original video features.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size: 16px; text-align: center;">Original</td>
+            <td style="font-size: 16px; text-align: center;">Per Frame Editing</td>
+            <td style="font-size: 16px; text-align: center;">Ours</td>
+          </tr> -->
+          <!-- <tr class="video-row">
+            <td style="text-align: center;">
+              <a href="sm/assets/man_basket/input_fps30.mp4">
+                <video preload="auto"width="224" src="sm/assets/man_basket/input_fps30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+            <td style="text-align: center;">
+              <a href="sm/assets/man_basket/Van-Gogh style portrait of a man spinning a basketball, oil painting, art by Van Gogh, 8k/pnp_per_frame_baseline_fps_30.mp4">
+                <video preload="auto"width="224" src="sm/assets/man_basket/Van-Gogh style portrait of a man spinning a basketball, oil painting, art by Van Gogh, 8k/pnp_per_frame_baseline_fps_30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+            <td style="text-align: center;">
+              <a href="sm/assets/man_basket/Van-Gogh style portrait of a man spinning a basketball, oil painting, art by Van Gogh, 8k/result_fps30.mp4">
+                <video preload="auto"width="224" src="sm/assets/man_basket/Van-Gogh style portrait of a man spinning a basketball, oil painting, art by Van Gogh, 8k/result_fps_30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+          </tr> -->
+          <!-- <tr class="video-row">
+            <td style="text-align: center;">
+              <a href="videos/pca/tokens_origvideo_30.mp4">
+                <video preload="auto"width="224" src="videos/pca/tokens_origvideo_30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+            <td style="text-align: center;">
+              <a href="videos/pca/tokens_pnpvideo_30.mp4">
+                <video preload="auto"width="224" src="videos/pca/tokens_pnpvideo_30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+            <td style="text-align: center;">
+              <a href="videos/pca/tokens_flowvideo_30.mp4">
+                <video preload="auto"width="224" src="videos/pca/tokens_flowvideo_30.mp4" autoplay loop controls muted/>
+              </a>
+            </td>
+          </tr> -->
+          <!-- <tr>
+            
+            <td colspan="3">
+              <p style="margin-top: 20px; margin-bottom: -12px;">
+                Our key finding is that a temporally-consistent edit can be achieved by enforcing consistency on the internal diffusion features across frames during the editing process.
+                We achieve this by propagating a small set of edited features across frames, using the correspondences between the original video features.
+                Given an input video I, we invert each frame, extract its tokens (i.e., output features from the self-attention modules), and extract inter-frame feature correspondences using a nearest-neighbor (NN) search. At each denoising step:
+              </p>
+              <ol>
+                (I) We sample keyframes from the noisy video J_t and jointly edit them using an extended-attention block. The set of resulting edited tokens is T_base.</li>
+                <br>
+                (II) We propagate the edited tokens across the video according to the pre-computed correspondences of the original video features.</li>
+              </ol>
+              To denoise J_t, we feed each frame to the network and replace the generated tokens with the tokens obtained from the propagation step (II).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+        <div>
+          <td colspan="3"><img src="pics/pipeline.png" alt="" width="1000" /></td>
+        </div>
+      
+      </div>
+      </div>
+  </section> -->
+<!--End paper poster -->
+
+<!-- Video grid -->
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">OCVE Editing results</h2>
+          <div class="content has-text-justified">
+            <td colspan="3">
+              <p style="margin-top: -12px;">
+                Hover over the videos to see the original video and text prompts.
+              </p>
+            </td>
+  <!-- </td> -->
+  <div class="video-wrapper" style="width: 32%">
+    <video preload="auto"class="hover-video" src="videos/results/otter/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+    <video preload="auto"class="default-video" src="videos/results/otter/otter_chameleon-on-surfboard_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+    <div class="overlay-text">a sks cartoon chameleon on a surfboard in the ocean</div>
+  </div>
+    <div class="video-wrapper" style="width: 32%">
+      <video preload="auto"class="hover-video" src="videos/results/otter/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="default-video" src="videos/results/otter/otter_dolphin-on-surfboard_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks cartoon dolphin on a surfboard in the ocean</div>
+    </div>
+    <div class="video-wrapper" style="width: 32%">
+      <video preload="auto"class="hover-video" src="videos/results/wolf/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="default-video" src="videos/results/wolf/wolf_rainbow_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks dog is standing in the woods</div>
+    </div>
+    <br />
+    <div class="video-wrapper" style="width: 32%">
+      <video preload="auto"class="hover-video" src="videos/results/wolf/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="default-video" src="videos/results/wolf/wolf_dog_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks dog is standing in the woods</div>
+    </div>
+      <div class="video-wrapper" style="width: 32%">
+        <video preload="auto"class="hover-video" src="videos/results/happycat/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+        <video preload="auto"class="default-video" src="videos/results/happycat/happy-cat_dog_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+        <div class="overlay-text">a sks rainbow-textured dog walking through a field of flowers</div>
+      </div>
+      <div class="video-wrapper" style="width: 32%">
+        <video preload="auto"class="hover-video" src="videos/results/happycat/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+        <video preload="auto"class="default-video" src="videos/results/happycat/happy-cat_cat_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+        <div class="overlay-text">a sks cat walking through a field of flowers</div>
+      </div>
+    <br />
+    <br />
+    <div class="video-wrapper" style="width: 32%">
+      <video preload="auto"class="hover-video" src="videos/results/pup/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="default-video" src="videos/results/pup/italianpup_rainbow_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks rainbow-textured poodle sitting in a window of a colorful house</div>
+    </div>
+      <div class="video-wrapper" style="width: 32%">
+        <video preload="auto"class="hover-video" src="videos/results/pup/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+        <video preload="auto"class="default-video" src="videos/results/pup/italianpup_dog_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+        <div class="overlay-text">a sks dog sitting in a window of a colorful house</div>
+      </div>
+      <div class="video-wrapper" style="width: 32%">
+        <video preload="auto"class="hover-video" src="videos/results/pup/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+        <video preload="auto"class="default-video" src="videos/results/pup/italianpup_giant_512_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+        <div class="overlay-text">a sks giant panda sitting in a window of a colorful house</div>
+      </div>
+    <br />
+    <br />
+    <div class="video-wrapper">
+      <video preload="auto"class="default-video" src="videos/results/tesla/tesla_audi_mask_spw16_fps_30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="hover-video" src="videos/results/tesla/input_fps30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks audi car drives on a snow-covered road</div>
+    </div>
+    <div class="video-wrapper">
+      <video preload="auto"class="default-video" src="videos/results/tesla/tesla_McLaren _mask_spw16_fps_30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="hover-video" src="videos/results/tesla/input_fps30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a orange sks McLaren car drives on a snow-covered road</div>
+    </div>
+    <br />
+    <br />
+    <div class="video-wrapper">
+      <video preload="auto"class="default-video" src="videos/results/stork/stork_mask_spw16_fps_30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="hover-video" src="videos/results/stork/input_fps30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks duck standing in the water</div>
+    </div>
+    <div class="video-wrapper">
+      <video preload="auto"class="default-video" src="videos/results/stork/stork_flamingo_mask_spw16_fps_30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="hover-video" src="videos/results/stork/input_fps30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks flamingo standing in the water</div>
+    </div>
+  
+    <br />
+
+<!--    
+    <div class="video-wrapper">
+      <video preload="auto"class="default-video" src="videos/results/stork/stork_mask_spw16_fps_30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="hover-video" src="videos/results/stork/input_fps30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a sks duck standing in the water</div>
+    </div>
+    <div class="video-grid">
+      <div class="video-wrapper">
+        <video preload="auto"class="hover-video" src="videos/results/stork/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+        <video preload="auto"class="default-video" src="videos/results/stork/stork_flamingo_mask_spw16_fps_10.mp4" preload="metadata" autoplay controls loop muted></video>
+        <div class="overlay-text">a sks flamingo standing in the water</div>
+      </div>
+    <br /> -->
+
+  </div>
+  
+</section>
+<!-- End video preload="auto"grid -->
+
+<!-- video preload="auto"carousel -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column custom-width">
+          <h2 class="title is-3">Comparisons</h2>
+          <div class="content has-text-justified">
+            <div class="caption-container" style="width: 1200px; padding-left: 50px">
+              <div class="caption">
+                <p>Input video</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: #eb002a">OCVE</i></p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fate-Zero</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;&nbsp;TokenFlow</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;Plug-and-Play</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;&nbsp;Text-to-video</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;Tune-A-Video</p>
+              </div>
+              <div class="caption">
+                <p>&nbsp;&nbsp;Gen-1</p>
+              </div>
+              
+              <!-- Add remaining captions here  -->
+            </div>
+      <div id="results-carousel" class="carousel results-carousel" align="center">
+        <div class="item item-video1">
+           <!-- Add caption element for each video preload="auto"-->
+          <video preload="auto"poster="" id="video11" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_input_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video12" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_ocve_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video13" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_fatezero_8.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video14" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_tokenflow_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video15" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_pnp_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video16" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_text2vid_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_tune-a-video_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+             <source src="videos/compare/poodle/poodle_gen1_30.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        
+        <div class="item item-video2">
+          
+          <video preload="auto"poster="" id="video1" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_input_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video21" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_ocve_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video22" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_fatezero_8.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video23" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_tokenflow_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video24" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_pnp_30.mp4"
+            type="video/mp4">
+          </video>
+          
+          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_text2vid_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_tune-a-video_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_gen1_30.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video preload="auto"carousel -->
+
+<!--BibTex citation -->
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{tokenflow2023,
+        title = {TokenFlow: Consistent Diffusion Features for Consistent Video Editing},
+        author = {Geyer, Michal and Bar-Tal, Omer and Bagon, Shai and Dekel, Tali},
+        journal={arXiv preprint arxiv:2307.10373},
+        year={2023}
+        }</code></pre>
+    </div>
+</section> -->
+<!--End BibTex citation -->
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column custom-width">
+          <!-- <h2 class="title is-3"></h2> -->
+          <div class="content has-text-justified">
+  <!-- <p>
+    <a name="ref-txt2vid" id="ref-txt2vid"></a>
+    [1] Levon Khachatryan, Andranik Movsisyan, Vahram Tadevosyan, Roberto Henschel, Zhangyang Wang, Shant Navasardyan, and Humphrey Shi. Text2video-zero: Text-to-image diffusion models are zero-shot video generators. arXiv preprint arXiv:2303.13439, 2023.
+  </p>
+  <p>
+    <a name="ref-TAV" id="ref-TAV"></a>
+    [2] Jay Zhangjie Wu, Yixiao Ge, Xintao Wang, Stan Weixian
+    Lei, Yuchao Gu, Wynne Hsu, Ying Shan, Xiaohu Qie, and
+    Mike Zheng Shou. Tune-a-video: One-shot tuning of image
+    diffusion models for text-to-video generation. arXiv preprint
+    arXiv:2212.11565, 2022
+  </p>
+  <p>
+    <a name="ref-gen1" id="ref-gen1"></a>
+    [3] Patrick Esser, Johnathan Chiu, Parmida Atighehchian,
+    Jonathan Granskog, and Anastasis Germanidis. Structure
+    and content-guided video synthesis with diffusion models.
+    arXiv preprint arXiv:2302.03011, 2023
+  </p>
+  <p>
+    <a name="ref-pnp" id="ref-pnp"></a>
+    [4] Narek Tumanyan, Michal Geyer, Shai Bagon, and
+    Tali Dekel. Plug-and-play diffusion features for text-
+    driven image-to-image translation. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023
+  </p> -->
+  
+  <p>
+    <a name="ref-ebsynth" id="ref-ebsynth"></a>
+    <!-- [6] Gwanghyun Kim, Taesung Kwon, and Jong Chul Ye. Diffusionclip: Text-guided diffusion models for robust image manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022. -->
+  </p>
+  </div>
+        </div>
+      </div>
+    </div>  
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const videoWrappers = document.querySelectorAll('.video-wrapper');
+      
+        videoWrappers.forEach(wrapper => {
+          const defaultVideo = wrapper.querySelector('.default-video');
+          const aspectRatio = defaultVideo.videoWidth / defaultVideo.videoHeight;
+          const height = wrapper.offsetWidth / aspectRatio;
+      
+          wrapper.style.height = `${height}px`;
+      
+          wrapper.addEventListener('mouseenter', () => {
+            defaultVideo.pause();
+            hoverVideo.play();
+          });
+      
+          wrapper.addEventListener('mouseleave', () => {
+            defaultVideo.play();
+            hoverVideo.pause();
+          });
+        });
+      }); 
+      $(document).ready(function() {
+        var carouselItems = $('.carousel .item');
+        var numItems = carouselItems.length;
+        var numVideos = 5;
+        var currentIndex = 0;
+    
+        $('.carousel').on('click', function() {
+          currentIndex++;
+          if (currentIndex + numVideos <= numItems) {
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          } else {
+            currentIndex = 0;
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          }
+        });
+    
+        carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+      });
+    </script>
+  </body>
+  </html>
