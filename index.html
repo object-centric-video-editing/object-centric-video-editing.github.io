@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>OCVE: Object-Centric Video Editing</title>
+  <title>Object-Centric Video Editing with User Intent</title>
   <link rel="icon" type="image/x-icon" href="static/images/ocve_logo.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,7 +52,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">OCVE: Object-Centric Video Editing</h1>
+            <h1 class="title is-1 publication-title">Object-Centric Video Editing with User Intent</h1>
 
 
                   <div class="is-size-3 publication-authors">
@@ -79,11 +79,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Advanced text-guided generation models have facilitated the creation of high-quality and diverse images/videos based on textual descriptions. 
-            However, these models still face limitations in faithfully replicating the visual appearance of a specified reference image or object and generating innovative variations.
-            These limitations can be more severe in the video-level generation because existing methods struggle with temporal consistency and precise control over object appearance and integration. 
-            In this paper, we present a novel <i style="color: #eb002a">Object-Centric-Video-Editing(OCVE)</i>  framework that delivers superior temporal coherence and enables user control, which contributes to personalized videos with object-centric editing and satisfactory content re-creation.
-            To ensure object-centric video editing with user intent and a visually coherent result, OCVE addresses key challenges by (1) providing reference images to guide precise edits, (2) employing an S.T.W (spatial-temporal window) attention mechanism to optimize computational efficiency, and (3) using mask-based latent editing to isolate object modifications from their background, preserving the integrity of the original scene. Finally, OCVE facilitates targeted video manipulation through keyframe mask editing in the latent space and extends these modifications to non-keyframes via correspondence propagation. This ensures seamless object edits, visually coherent results, and smooth, natural-looking object interactions within the video. Extensive experiments demonstrate that OCVE outperforms existing methods in creating controlled and temporally consistent video editing. 
+            Advanced diffusion-based video editing models primarily focus on using textual descriptions to edit the color and texture of objects within videos. However, a key challenge for these models is that they cannot effectively align the generated object edits with user intent during video editing. For users without expert text prompt training, text-guided editing alone is insufficient for controlling the appearance of edited objects. We introduce the <i style="color: #eb002a">Object-Centric-Video-Editing(OCVE)</i> framework, which provides users with image-based guidance, allowing them greater freedom in controlling object edits and better aligning with their intended modifications. Additionally, we introduce a novel memory-efficient window attention mechanism, which reduces the computational cost of video editing while ensuring consistent motion of edited objects. By leveraging latent interpolation, we also preserve the background regions that do not require modification. Extensive experiments demonstrate that OCVE outperforms existing methods in generating video edits that satisfy user intent and maintain temporal consistency.
           </p>
         </div>
       </div>
@@ -98,10 +94,10 @@
       <div class="column">
         <h2 class="title is-2">Pipeline</h2>
         <div class="content has-text-justified">
-          <img src="static/images/ocve-pipline.png" />
+          <img src="static/images/ocve-pipeline.png" />
         </div>
         <p class="content has-text-justified">
-         <b>Pipeline:</b> Utilizing both a chat agent-generated text description and the reference image, OCVE precisely edits the target object throughout the video while maintaining overall visual coherence. The figure shows the video editing results of OCVE applied to two user-provided reference images, Ref I and Ref II, respectively.
+         <b>Pipeline:</b> OCVE performs user-intent-driven editing on the original video. First, the user provides reference images containing the target object. Through reference image fine-tuning, the object concept V* is extracted. Then, the object mentioned in the original video’s caption is replaced with V*, regenerating the video content to reflect the desired edits.
          <br/><br/>
         </p>
       </div>
@@ -120,7 +116,7 @@
           <img src="static/images/ocve_framework.png" />
         </div>
         <p class="content has-text-justified">
-         <b>Method:</b> OCVE framework: Our novel object-centric video editing framework incorporates: 1) Reference image-based LoRA fine-tuning, 2) Spatial-temporal window attention for optimized keyframe generation, and 3) Mask-based latent blending for controlled edits and inter-frame propagation.
+         <b>Method:</b> CVE framework: Our novel object-centric video editing framework incorporates: 1) Reference image-based LoRA fine-tuning, 2) Memory-efficient window attention for optimized keyframe generation, and 3) Latent Interpolation for controlled edits and inter-frame propagation.
          <br/><br/>
         </p>
       </div>
@@ -258,9 +254,9 @@
       <div class="overlay-text">a sks cartoon dolphin on a surfboard in the ocean</div>
     </div>
     <div class="video-wrapper" style="width: 32%">
-      <video preload="auto"class="hover-video" src="videos/results/wolf/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
-      <video preload="auto"class="default-video" src="videos/results/wolf/wolf_rainbow_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
-      <div class="overlay-text">a sks dog is standing in the woods</div>
+      <video preload="auto"class="hover-video" src="videos/results/otter/input_fps30.mp4" preload="metadata" autoplay loop muted> </video>
+      <video preload="auto"class="default-video" src="videos/results/otter/otter-maple_mask_spw16_fps_30.mp4" preload="metadata" autoplay controls loop muted></video>
+      <div class="overlay-text">a maple sks cartoon chameleon on a surfboard in the ocean</div>
     </div>
     <br />
     <div class="video-wrapper" style="width: 32%">
@@ -363,6 +359,9 @@
                 <p>&nbsp;&nbsp;&nbsp;TokenFlow</p>
               </div>
               <div class="caption">
+                <p>&nbsp;&nbsp;&nbsp;VideoSwap</p>
+              </div>
+              <div class="caption">
                 <p>&nbsp;&nbsp;Plug-and-Play</p>
               </div>
               <div class="caption">
@@ -370,9 +369,6 @@
               </div>
               <div class="caption">
                 <p>&nbsp;&nbsp;Tune-A-Video</p>
-              </div>
-              <div class="caption">
-                <p>&nbsp;&nbsp;Gen-1</p>
               </div>
               
               <!-- Add remaining captions here  -->
@@ -402,26 +398,25 @@
             <source src="videos/compare/poodle/poodle_tokenflow_30.mp4"
             type="video/mp4">
           </video>
-          
           <video preload="auto"poster="" id="video15" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_videoswap_30.mp4"
+            type="video/mp4">
+          </video>
+          <video preload="auto"poster="" id="video16" autoplay controls muted loop width="140px">
             <!-- Your video preload="auto"file here -->
             <source src="videos/compare/poodle/poodle_pnp_30.mp4"
             type="video/mp4">
           </video>
           
-          <video preload="auto"poster="" id="video16" autoplay controls muted loop width="140px">
+          <video preload="auto"poster="" id="video17" autoplay controls muted loop width="140px">
             <!-- Your video preload="auto"file here -->
             <source src="videos/compare/poodle/poodle_text2vid_30.mp4"
             type="video/mp4">
           </video>
-          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
+          <video preload="auto"poster="" id="video18" autoplay controls muted loop width="140px">
             <!-- Your video preload="auto"file here -->
             <source src="videos/compare/poodle/poodle_tune-a-video_30.mp4"
-            type="video/mp4">
-          </video>
-          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
-            <!-- Your video preload="auto"file here -->
-             <source src="videos/compare/poodle/poodle_gen1_30.mp4"
             type="video/mp4">
           </video>
         </div>
@@ -451,7 +446,11 @@
             <source src="videos/compare/poodle/poodle_tokenflow_30.mp4"
             type="video/mp4">
           </video>
-          
+          <video preload="auto"poster="" id="video15" autoplay controls muted loop width="140px">
+            <!-- Your video preload="auto"file here -->
+            <source src="videos/compare/poodle/poodle_videoswap_30.mp4"
+            type="video/mp4">
+          </video>s 
           <video preload="auto"poster="" id="video24" autoplay controls muted loop width="140px">
             <!-- Your video preload="auto"file here -->
             <source src="videos/compare/poodle/poodle_pnp_30.mp4"
@@ -468,11 +467,7 @@
             <source src="videos/compare/poodle/poodle_tune-a-video_30.mp4"
             type="video/mp4">
           </video>
-          <video preload="auto"poster="" id="video25" autoplay controls muted loop width="140px">
-            <!-- Your video preload="auto"file here -->
-            <source src="videos/compare/poodle/poodle_gen1_30.mp4"
-            type="video/mp4">
-          </video>
+
         </div>
         </div>
       </div>
