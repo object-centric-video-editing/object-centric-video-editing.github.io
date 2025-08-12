@@ -98,6 +98,7 @@
         </div>
         <p class="content has-text-justified">
          <b>Pipeline:</b> OCVE performs user-intent-driven editing on the original video. First, the user provides reference images containing the target object. Through reference image fine-tuning, the object concept V* is extracted. Then, the object mentioned in the original video’s caption is replaced with V*, regenerating the video content to reflect the desired edits.
+         
          <br/><br/>
         </p>
       </div>
@@ -116,7 +117,7 @@
           <img src="static/images/ocve_framework.png" />
         </div>
         <p class="content has-text-justified">
-         <b>Method:</b> CVE framework: Our novel object-centric video editing framework incorporates: 1) Reference image-based LoRA fine-tuning, 2) Memory-efficient window attention for optimized keyframe generation, and 3) Latent Interpolation for controlled edits and inter-frame propagation.
+         <b>Method:</b> OCVE framework: Our novel object-centric video editing framework incorporates: 1) Reference image-based LoRA fine-tuning, 2) Memory-efficient window attention and latent interpolation for keyframe editing, 3) Keyframe-to-non-keyframe correspondence editing content propagation.
          <br/><br/>
         </p>
       </div>
